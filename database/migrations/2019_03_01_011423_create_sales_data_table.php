@@ -20,7 +20,7 @@ class CreateSalesDataTable extends Migration
             $table->string('CustomerName');
             $table->string('CustomerAddress');
             $table->bigInteger('CustomerContact');
-            $table->boolean('ThreeMonths');
+            $table->string('ThreeMonths');
         });
     }
 
