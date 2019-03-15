@@ -25,4 +25,6 @@ Route::post('register', 'UserController@register');
         Route::get('closed', 'DataController@closed');
     });
 
-Route::post('salescreate', 'SalesController@create');
+Route::post('sales/create', 'SalesController@create');
+Route::get('sales/{id}', 'SalesController@find');
+Route::get('sales','SalesController@all');

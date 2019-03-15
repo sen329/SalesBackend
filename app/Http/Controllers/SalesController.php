@@ -16,6 +16,18 @@ class SalesController extends Controller
         $this->sales = $sales;
     }
 
+    public function all()
+    {
+        $sales=$this->sales->all();
+        return response()->json($sales,200);
+    }
+
+    public function find($id)
+    {
+        $sales = $this->sales->findOrFail($id);
+        return $sales;
+    }
+
     public function create(Request $request)
     {
         $sales = [
