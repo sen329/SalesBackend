@@ -22,8 +22,8 @@
             } catch (JWTException $e) {
                 return response()->json(['error' => 'could_not_create_token'], 500);
             }
-
-            return response()->json(compact('token'));
+            $user = User::where('email', $request->email)->first();
+            return response()->json(['success' => true, 'token'=>  $token, 'name'=> $user->name]);
         }
 
         public function register(Request $request)
@@ -71,6 +71,6 @@
 
                     }
 
-                    return response()->json(compact('user'));
+                    return response()->json([compact('user'),'name'=> $user->name]);
             }
     }
