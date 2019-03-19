@@ -23,8 +23,7 @@ Route::post('register', 'UserController@register');
     Route::group(['middleware' => ['jwt.verify']], function() {
         Route::get('user', 'UserController@getAuthenticatedUser');
         Route::get('closed', 'DataController@closed');
+        Route::post('sales/create', 'SalesController@create');
+        Route::get('sales/{id}', 'SalesController@find');
+        Route::get('sales','SalesController@all');
     });
-
-Route::post('sales/create', 'SalesController@create');
-Route::get('sales/{id}', 'SalesController@find');
-Route::get('sales','SalesController@all');
