@@ -46,4 +46,11 @@ class SalesController extends Controller
             return response($ex);
         }
     }
+    public function update(Request $request, $id)
+    {   
+      $sales = SalesData::findOrFail($id);
+      $sales->Accepted = $request->Accepted;
+      $sales->save();
+      return response('success',200);
+        }
 }

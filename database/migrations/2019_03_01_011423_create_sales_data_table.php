@@ -21,7 +21,7 @@ class CreateSalesDataTable extends Migration
             $table->string('CustomerAddress');
             $table->bigInteger('CustomerContact');
             $table->string('ThreeMonths');
-            $table->boolean('Accepted1')->default(0);
+            $table->boolean('Accepted')->default(0);
         });
     }
 
