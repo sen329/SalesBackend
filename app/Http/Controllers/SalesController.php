@@ -51,6 +51,6 @@ class SalesController extends Controller
       $sales = SalesData::findOrFail($id);
       $sales->Accepted = $request->Accepted;
       $sales->save();
-      return response('success',200);
+      return response()->json($sales,200);
         }
 }
