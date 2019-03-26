@@ -21,7 +21,10 @@ class CreateSalesDataTable extends Migration
             $table->string('CustomerAddress');
             $table->bigInteger('CustomerContact');
             $table->string('ThreeMonths');
+            $table->unsignedBigInteger('by_userId');
+            $table->string('name');
             $table->boolean('Accepted')->nullable();
+            $table->foreign('by_userId')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

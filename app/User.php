@@ -35,4 +35,8 @@ public function getJWTCustomClaims()
 {
     return[];
 }
+public function getSales()
+{
+return $this->hasMany('App\SalesData','by_user');
+}
 }

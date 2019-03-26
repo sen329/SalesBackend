@@ -8,6 +8,6 @@ class SalesData extends Model
 {   
     public $timestamps = false;
     protected $table = 'sales_data';
-    protected $fillable = ['ProjectClass', 'SalesName', 'CustomerName','CustomerAddress','CustomerContact','ThreeMonths','Accepted'];
+    protected $fillable = ['ProjectClass', 'SalesName', 'CustomerName','CustomerAddress','CustomerContact','ThreeMonths','by_userId','name','Accepted'];
     protected $guarded =[];
 }

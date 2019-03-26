@@ -36,6 +36,8 @@ class SalesController extends Controller
             "CustomerName"=>$request->CustomerName,
             "CustomerAddress"=>$request->CustomerAddress,
             "CustomerContact"=>$request->CustomerContact,
+            "by_userId"=>$request->user()->id,
+            "name"=>$request->user()->name,
             "ThreeMonths"=>$request->ThreeMonths
         ];
         try{
@@ -53,4 +55,14 @@ class SalesController extends Controller
       $sales->save();
       return response()->json($sales,200);
         }
+    public function allSales(){
+        $sales->$this->$sales->all();
+        return response()->json($sales,200);
+    }
+    public function getUser($id){
+        $sales = SalesData::findOrFail($id);
+        $sales->user;
+        return $sales;
+    }
+
 }
