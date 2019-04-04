@@ -78,12 +78,13 @@ class SalesController extends Controller
         try{
             $sales = $this->sales->where('sales_data.id','=',$id)->
                 join('products','products.id','=','sales_data.ProductUsedId')
-                ->select('sales_data.id','sales_data.SalesName','sales_data.CustomerName',
-                'sales_data.CustomerAddress','sales_data.CustomerContact',
-                'products.id AS ProductUsedId', 'products.name AS ProductName',
-                'sales_data.ProductQuantity','sales_data.ProposedPrice',
-                'sales_data.name','sales_data.ThreeMonths',
-                'sales_data.Accepted')
+                ->select(DB::Raw('sales_data.id,sales_data.SalesName,sales_data.CustomerName,
+                sales_data.CustomerAddress,sales_data.CustomerContact,
+                products.id AS ProductUsedId, products.name AS ProductName,
+                sales_data.ProductQuantity,sales_data.ProposedPrice, 
+				((sales_data.ProposedPrice-products.price)/sales_data.ProposedPrice*100) as Margin,
+                sales_data.name,sales_data.ThreeMonths,
+                sales_data.Accepted'))
                 ->first();
                 return $sales;
         }catch (Exception $ex) {
