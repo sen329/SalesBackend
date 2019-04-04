@@ -17,7 +17,7 @@ class SalesController extends Controller
     }
 
     public function all()
-    {
+    {   
         $sales=$this->sales->all();
         return response()->json($sales,200);
     }
@@ -36,6 +36,9 @@ class SalesController extends Controller
             "CustomerName"=>$request->CustomerName,
             "CustomerAddress"=>$request->CustomerAddress,
             "CustomerContact"=>$request->CustomerContact,
+            "ProductUsedId"=>$request->ProductUsedId,
+            "ProductQuantity"=>$request->ProductQuantity,
+            "ProposedPrice"=>$request->ProposedPrice,
             "by_userId"=>$request->user()->id,
             "name"=>$request->user()->name,
             "ThreeMonths"=>$request->ThreeMonths
@@ -55,6 +58,12 @@ class SalesController extends Controller
       $sales->save();
       return response()->json($sales,200);
         }
+    public function getProduct($id){
+            $sales = SalesData::findOrFail($id);
+            $sales->product;
+            return $sales;
+    }
+
     public function allSales(){
         $sales->$this->$sales->all();
         return response()->json($sales,200);
@@ -63,6 +72,24 @@ class SalesController extends Controller
         $sales = SalesData::findOrFail($id);
         $sales->user;
         return $sales;
+    }
+    
+    public function showAllData($id){
+        try{
+            $sales = $this->sales->where('sales_data.id','=',$id)->
+                join('products','products.id','=','sales_data.ProductUsedId')
+                ->select('sales_data.id','sales_data.SalesName','sales_data.CustomerName',
+                'sales_data.CustomerAddress','sales_data.CustomerContact',
+                'products.id AS ProductUsedId', 'products.name AS ProductName',
+                'sales_data.ProductQuantity','sales_data.ProposedPrice',
+                'sales_data.name','sales_data.ThreeMonths',
+                'sales_data.Accepted')
+                ->first();
+                return $sales;
+        }catch (Exception $ex) {
+            echo $ex;
+            return response('Failed', 400);
+        }
     }
 
 }
