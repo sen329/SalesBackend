@@ -31,7 +31,6 @@ class SalesController extends Controller
     public function create(Request $request)
     {
         $sales = [
-            "ProjectClass"=>$request->ProjectClass,
             "SalesName"=>$request->SalesName,
             "CustomerName"=>$request->CustomerName,
             "CustomerAddress"=>$request->CustomerAddress,
@@ -40,8 +39,7 @@ class SalesController extends Controller
             "ProductQuantity"=>$request->ProductQuantity,
             "ProposedPrice"=>$request->ProposedPrice,
             "by_userId"=>$request->user()->id,
-            "name"=>$request->user()->name,
-            "ThreeMonths"=>$request->ThreeMonths
+            "name"=>$request->user()->name
         ];
         try{
             $sales = $this->sales->create($sales);
@@ -80,10 +78,9 @@ class SalesController extends Controller
                 join('products','products.id','=','sales_data.ProductUsedId')
                 ->select(DB::Raw('sales_data.id,sales_data.SalesName,sales_data.CustomerName,
                 sales_data.CustomerAddress,sales_data.CustomerContact,
-                products.id AS ProductUsedId, products.name AS ProductName,
-                sales_data.ProductQuantity,sales_data.ProposedPrice, 
+                products.id AS ProductUsedId, products.name AS ProductName, products.productcode AS ProductCode,
+                sales_data.ProductQuantity,sales_data.ProposedPrice, products.price AS ProductPrice,
 				((sales_data.ProposedPrice-products.price)/sales_data.ProposedPrice*100) as Margin,
-                sales_data.name,sales_data.ThreeMonths,
                 sales_data.Accepted'))
                 ->first();
                 return $sales;

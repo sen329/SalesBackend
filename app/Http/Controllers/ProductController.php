@@ -15,24 +15,20 @@ class ProductController extends Controller
     {
         $this->product = $product;
     }
-    public function getNonConsumables()
-    {
-        $product = DB::select('select * from products where type = "Non-Consumable"');
-        return response()->json($product,200);
-    }
 
-    public function getConsumables()
-    {
-        $product = DB::select('select * from products where type = "Consumable"');
-        return response()->json($product,200);
-    }
-
-    public function getItemId($id)
+    public function getItem($id)
     {
         $product = $this->product->findOrFail($id);
         return response()->json($product,200);
     }
 
+    public function update(Request $request, $id)
+    {   
+      $product = product::findOrFail($id);
+      $product->price = $request->price;
+      $product->save();
+      return response()->json($product,200);
+    }
     public function all()
     {
         $product = $this->product->all();

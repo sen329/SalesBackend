@@ -15,12 +15,10 @@ class CreateSalesDataTable extends Migration
     {
         Schema::create('sales_data', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('ProjectClass');
             $table->string('SalesName');
             $table->string('CustomerName');
             $table->string('CustomerAddress');
             $table->bigInteger('CustomerContact');
-            $table->string('ThreeMonths');
             $table->unsignedBigInteger('ProductUsedId');
             $table->string('ProductQuantity');
             $table->bigInteger('ProposedPrice');

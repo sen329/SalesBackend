@@ -27,11 +27,11 @@ Route::post('register', 'UserController@register');
         Route::get('sales/{id}', 'SalesController@find');
         Route::get('sales','SalesController@all');
         Route::post('sales/{id}','SalesController@update');
-        Route::get('sales/product/{id}','SalesController@getProduct');
-        Route::get('product/consumables','ProductController@getConsumables');
-        Route::get('product/nonconsumables','ProductController@getNonConsumables');
+        Route::get('sales/detail/{id}','SalesController@getProduct');
         Route::get('product','ProductController@all');
         Route::get('proposal/{id}','SalesController@showAllData');
+        Route::get('product/{id}','ProductController@getItem');
+        Route::post('product/{id}','ProductController@update');
     });
 
  
