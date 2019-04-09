@@ -81,7 +81,7 @@ class SalesController extends Controller
                 products.id AS ProductUsedId, products.name AS ProductName, products.productcode AS ProductCode,
                 sales_data.ProductQuantity,sales_data.ProposedPrice, products.price AS ProductPrice,
 				((sales_data.ProposedPrice-products.price)/sales_data.ProposedPrice*100) as Margin,
-                sales_data.Accepted'))
+                sales_data.name, sales_data.Accepted'))
                 ->first();
                 return $sales;
         }catch (Exception $ex) {
