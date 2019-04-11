@@ -39,6 +39,8 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
+        $this->mapUserbuyRoutes();
+
         //
     }
 
@@ -70,4 +72,14 @@ class RouteServiceProvider extends ServiceProvider
              ->namespace($this->namespace)
              ->group(base_path('routes/api.php'));
     }
+
+    protected function mapuserbuyRoutes()
+    {
+        Route::prefix('userbuy')
+             ->middleware('userbuy')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/userbuy.php'));
+    }
+
+
 }

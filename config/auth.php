@@ -36,6 +36,11 @@ return [
     */
 
     'guards' => [
+        'userbuy' => [
+            'driver' => 'session',
+            'provider' => 'userbuys',
+        ],
+
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
@@ -66,6 +71,11 @@ return [
     */
 
     'providers' => [
+        'userbuys' => [
+            'driver' => 'eloquent',
+            'model' => App\Userbuy::class,
+        ],
+
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
@@ -93,6 +103,12 @@ return [
     */
 
     'passwords' => [
+        'userbuys' => [
+            'provider' => 'userbuys',
+            'table' => 'userbuy_password_resets',
+            'expire' => 60,
+        ],
+
         'users' => [
             'provider' => 'users',
             'table' => 'password_resets',

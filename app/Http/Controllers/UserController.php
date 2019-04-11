@@ -13,7 +13,10 @@
     {
         public function authenticate(Request $request)
         {
-            $credentials = $request->only('email', 'password');
+            \Config::set('jwt.user','App\User');
+                \Config::set('auth.providers.users.model',\App\User::class);
+                $credentials = $request->only('email', 'password');
+                $token = null;
 
             try {
                 if (! $token = JWTAuth::attempt($credentials)) {

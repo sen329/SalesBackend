@@ -2,10 +2,12 @@
 
 namespace App;
 
+use Tymon\JWTAuth\Contracts\JWTSubject;
+use App\Notifications\UserbuyResetPassword;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Tymon\JWTAuth\Contracts\JWTSubject;
-class UserBuy extends Authenticatable implements JWTSubject
+
+class Userbuy extends Authenticatable implements JWTSubject
 {
     use Notifiable;
 
@@ -27,7 +29,18 @@ class UserBuy extends Authenticatable implements JWTSubject
         'password', 'remember_token',
     ];
 
-public function getJWTIdentifier()
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new UserbuyResetPassword($token));
+    }
+
+    public function getJWTIdentifier()
 {
     return $this->getKey();
 }

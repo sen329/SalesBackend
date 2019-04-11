@@ -23,9 +23,17 @@ Route::post('buy/register', 'UserBuyController@register');
     Route::get('open', 'DataController@open');
 
     Route::group(['middleware' => ['jwt.verify']], function() {
-        Route::get('user', 'UserController@getAuthenticatedUser');
-        Route::get('closed', 'DataController@closed');
         Route::post('sales/create', 'SalesController@create');
+        Route::get('sales/{id}', 'SalesController@find');
+        Route::get('sales','SalesController@all');
+        Route::get('sales/detail/{id}','SalesController@getProduct');
+        Route::get('product','ProductController@all');
+        Route::get('proposal/{id}','SalesController@showAllData');
+        Route::get('product/{id}','ProductController@getItem');
+        Route::post('product/{id}','ProductController@update');
+    });
+
+    Route::group([ 'prefix' => 'userbuy'], function(){
         Route::get('sales/{id}', 'SalesController@find');
         Route::get('sales','SalesController@all');
         Route::post('sales/{id}','SalesController@update');
@@ -34,6 +42,4 @@ Route::post('buy/register', 'UserBuyController@register');
         Route::get('proposal/{id}','SalesController@showAllData');
         Route::get('product/{id}','ProductController@getItem');
         Route::post('product/{id}','ProductController@update');
-    });
-
- 
+   });
