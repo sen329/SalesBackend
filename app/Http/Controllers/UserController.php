@@ -26,7 +26,7 @@
                 return response()->json(['error' => 'could_not_create_token'], 500);
             }
             $user = User::where('email', $request->email)->first();
-            return response()->json(['success' => true, 'token'=>  $token, 'name'=> $user->name]);
+            return response()->json(['success' => true, 'token'=>  $token, 'name'=> $user->name, 'id'=> $user->id]);
         }
 
         public function register(Request $request)
@@ -76,4 +76,11 @@
 
                     return response()->json([compact('user'),'name'=> $user->name]);
             }
+
+            public function getMySales($id){
+                $user = User::findOrFail($id);
+                $user->sales;
+                return $user;
+            }
+
     }

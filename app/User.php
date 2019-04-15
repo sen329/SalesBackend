@@ -35,4 +35,9 @@ public function getJWTCustomClaims()
 {
     return[];
 }
+
+public function sales(){
+    return $this->hasMany('App\SalesData', 'ProductUsedId');
+}
+
 }

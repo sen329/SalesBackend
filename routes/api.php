@@ -30,10 +30,10 @@ Route::post('buy/register', 'UserBuyController@register');
         Route::get('product','ProductController@all');
         Route::get('proposal/{id}','SalesController@showAllData');
         Route::get('product/{id}','ProductController@getItem');
-        Route::post('product/{id}','ProductController@update');
+        Route::get('sales/mysales/{id}','SalesController@mySales');
     });
 
-    Route::group([ 'prefix' => 'userbuy'], function(){
+    Route::group([ 'middleware' => ['jwt.verify']], function(){
         Route::get('sales/{id}', 'SalesController@find');
         Route::get('sales','SalesController@all');
         Route::post('sales/{id}','SalesController@update');
@@ -42,4 +42,6 @@ Route::post('buy/register', 'UserBuyController@register');
         Route::get('proposal/{id}','SalesController@showAllData');
         Route::get('product/{id}','ProductController@getItem');
         Route::post('product/{id}','ProductController@update');
+        Route::get('sales/search/id/{id}','SalesController@findByID');
+        Route::get('sales/search/name/{name}','SalesController@findByName');
    });

@@ -9,6 +9,8 @@
     use JWTAuth;
     use Tymon\JWTAuth\Exceptions\JWTException;
 
+    use Illuminate\Support\Facades\Auth;
+
     class UserBuyController extends Controller
     {
         public function authenticate(Request $request)
