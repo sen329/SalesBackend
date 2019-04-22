@@ -23,25 +23,16 @@ Route::post('buy/register', 'UserBuyController@register');
     Route::get('open', 'DataController@open');
 
     Route::group(['middleware' => ['jwt.verify']], function() {
-        Route::post('sales/create', 'SalesController@create');
-        Route::get('sales/{id}', 'SalesController@find');
-        Route::get('sales','SalesController@all');
+        Route::post('sales/create', 'OrderDetailController@create');
+        Route::get('sales/{id}', 'OrderDetailController@find');
+        Route::get('sales','OrderDetailController@all');
         Route::get('sales/detail/{id}','SalesController@getProduct');
         Route::get('product','ProductController@all');
-        Route::get('proposal/{id}','SalesController@showAllData');
+        Route::get('proposal/{id}','OrderDetailController@getAllData');
         Route::get('product/{id}','ProductController@getItem');
         Route::get('sales/mysales/{id}','SalesController@mySales');
-    });
-
-    Route::group([ 'middleware' => ['jwt.verify']], function(){
-        Route::get('sales/{id}', 'SalesController@find');
-        Route::get('sales','SalesController@all');
         Route::post('sales/{id}','SalesController@update');
-        Route::get('sales/detail/{id}','SalesController@getProduct');
-        Route::get('product','ProductController@all');
-        Route::get('proposal/{id}','SalesController@showAllData');
-        Route::get('product/{id}','ProductController@getItem');
         Route::post('product/{id}','ProductController@update');
         Route::get('sales/search/id/{id}','SalesController@findByID');
         Route::get('sales/search/name/{name}','SalesController@findByName');
-   });
+    });

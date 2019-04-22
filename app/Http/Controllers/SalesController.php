@@ -91,17 +91,17 @@ class SalesController extends Controller
     }
 
     public function findByID($id){
-        $sales = SalesData::findOrFail($id);
+        $sales = SalesData::with('orders')->findOrFail($id);
         return $sales;
     }
 
     public function findByName($name){
-        $sales = $this->sales->where('name',$name)->get();
+        $sales = SalesData::with('orders')->where('name',$name)->get();
         return $sales;
     }
 
     public function mySales($by_userId){
-        $sales = $this->sales->where('by_userId',$by_userId)->get();
+        $sales = SalesData::with('orders')->where('by_userId',$by_userId)->get();
         return $sales;
     }
 

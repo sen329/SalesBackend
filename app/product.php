@@ -11,8 +11,8 @@ class product extends Model
     protected $fillable = ['price'];
     protected $guarded =[];
 
-    public function getSales()
+    public function order()
     {
-    return $this->hasMany('App\SalesData','id','ProductUsedId');
+    return $this->hasMany('App\OrderDetail','product_id');
     }
 }

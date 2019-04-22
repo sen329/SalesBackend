@@ -8,11 +8,22 @@ class SalesData extends Model
 {   
     public $timestamps = false;
     protected $table = 'sales_data';
-    protected $fillable = ['SalesName', 'CustomerName','CustomerAddress','CustomerContact','ProductUsedId','ProductQuantity','ProposedPrice','by_userId','name','Accepted'];
+    protected $fillable = ['SalesName', 'CustomerName','CustomerAddress','CustomerContact','by_userId','name','Accepted'];
     protected $guarded =[];
+    protected $appends = [
+        'margin'
+    ];
 
-    public function product()
+    public function orders()
     {
-        return $this->belongsTo('App\product','ProductUsedId');
+        return $this->hasMany('App\OrderDetail','sales_id');
+    }
+
+    public function margin() {
+        return $this->product()->select(DB::raw('(ProposedPrice - ProductPrice)/ProposedPrice*100'));
+    }
+
+    public function getMarginAttribute() {
+        return $this->orders->sum->margin/$this->orders()->count();
     }
 }
