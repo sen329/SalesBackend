@@ -35,4 +35,5 @@ Route::post('buy/register', 'UserBuyController@register');
         Route::post('product/{id}','ProductController@update');
         Route::get('sales/search/id/{id}','SalesController@findByID');
         Route::get('sales/search/name/{name}','SalesController@findByName');
+        Route::get('sales/order/{sales_id}','OrderDetailController@salesOrder');
     });

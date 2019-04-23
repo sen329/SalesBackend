@@ -29,6 +29,7 @@ class OrderDetailController extends Controller
             "by_userId"=>$request->user()->id,
             "name"=>$request->user()->name
         ];
+        //dd($request->all());
         DB::beginTransaction();
         try{
             $sales = $this->sales->create($sales);
@@ -39,6 +40,7 @@ class OrderDetailController extends Controller
             );
             $orderDetailsArr[] = new OrderDetail([
                 'product_id'  => $value,
+                'ProductName' => $product->name,
                 'ProductCode' => $product->productcode,
                 'ProductPrice'   => $product->price,
                 'ProposedPrice'  => $request->input('ProposedPrice.' . $key),
@@ -76,4 +78,9 @@ class OrderDetailController extends Controller
         return $sales;
     }
 
+    public function salesOrder($sales_id)
+    {
+        $order = $this->order->where('sales_id',$sales_id)->get();
+        return $order;
+    }
 }
