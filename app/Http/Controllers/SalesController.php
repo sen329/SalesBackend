@@ -49,13 +49,7 @@ class SalesController extends Controller
             return response($ex);
         }
     }
-    public function update(Request $request, $id)
-    {   
-      $sales = SalesData::findOrFail($id);
-      $sales->Accepted = $request->Accepted;
-      $sales->save();
-      return response()->json($sales,200);
-        }
+    
     public function getProduct($id){
             $sales = SalesData::findOrFail($id);
             $sales->product;

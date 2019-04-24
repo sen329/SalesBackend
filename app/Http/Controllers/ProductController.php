@@ -22,12 +22,37 @@ class ProductController extends Controller
         return response()->json($product,200);
     }
 
+    public function create(Request $request)
+    {
+        $product = [
+            "name" => $request->name,
+            "productcode" => $request->productcode,
+            "price"=> $request->price,
+        ];
+        //dd($request->all());
+        try{
+            $product = $this->product->create($product);
+            return response()->json($product,200);
+        }
+            catch(Exception $ex)  {
+                return response ($ex);
+            }    
+    }
+
     public function update(Request $request, $id)
     {   
-      $product = product::findOrFail($id);
-      $product->price = $request->price;
-      $product->save();
-      return response()->json($product,200);
+      $product = [
+          "name" => $request->name,
+          "productcode" => $request->productcode,
+          "price"=> $request->price,
+      ];
+      try{
+        $this->product->findOrFail($id)->save();
+        return response()->json($product,200);
+      }
+        catch(Exception $ex)  {
+            return response ($ex);
+        }    
     }
     public function all()
     {

@@ -21,7 +21,6 @@ class CreateSalesDataTable extends Migration
             $table->bigInteger('CustomerContact');
             $table->unsignedBigInteger('by_userId');
             $table->string('name');
-            $table->boolean('Accepted')->nullable();
         });
     }
 

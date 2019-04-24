@@ -83,4 +83,21 @@ class OrderDetailController extends Controller
         $order = $this->order->where('sales_id',$sales_id)->get();
         return $order;
     }
+
+    public function update(Request $request)
+    {   
+      foreach($request->input('ids') as $key => $value){
+        $order = $this->order->findOrFail($value);
+        $order->Accepted = $request->input('Accepted.' . $key);
+        if (! $order->save()) {
+            return response()->json([
+                'message' => 'Error'
+            ]);
+        }
+      }
+      //dd($request->all());
+      return response()->json([
+        'message' => 'Success'
+      ]);
+}
 }

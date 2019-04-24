@@ -22,6 +22,7 @@ class CreateOrderDetailsTable extends Migration
             $table->bigInteger('ProductPrice');
             $table->bigInteger('ProposedPrice');
             $table->integer('Quantity');
+            $table->boolean('Accepted')->nullable();
         });
     }
 
