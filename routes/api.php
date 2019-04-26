@@ -37,4 +37,5 @@ Route::post('buy/register', 'UserBuyController@register');
         Route::get('sales/search/id/{id}','SalesController@findByID');
         Route::get('sales/search/name/{name}','SalesController@findByName');
         Route::get('sales/order/{sales_id}','OrderDetailController@salesOrder');
+        Route::post('upload','ProductController@uploadExcel');
     });

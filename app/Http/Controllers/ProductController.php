@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\product;
 use DB;
 use Exception;
+use App\Imports\ProductImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProductController extends Controller
 {
@@ -59,4 +61,20 @@ class ProductController extends Controller
         $product = $this->product->all();
         return response()->json($product,200);
     }
+
+    private function _import_csv($path, $filename)
+    {
+        $csv = $path . $filename; 
+        //ofcourse you have to modify that with proper table and field names
+        $query = sprintf("LOAD DATA local INFILE '%s' INTO TABLE your_table FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '\"' ESCAPED BY '\"' LINES TERMINATED BY '\\n' IGNORE 0 LINES (`filed_one`, `field_two`, `field_three`)", addslashes($csv));
+        return DB::connection()->getpdo()->exec($query);
+    }
+
+
+public function uploadExcel(){
+    Excel::import(new ProductImport, request()->file('file'));
+    
+    return redirect('/')->with('success', 'All good!');
+
+}
 }
