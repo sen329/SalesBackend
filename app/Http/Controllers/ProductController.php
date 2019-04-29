@@ -27,9 +27,9 @@ class ProductController extends Controller
     public function create(Request $request)
     {
         $product = [
-            "name" => $request->name,
-            "productcode" => $request->productcode,
-            "price"=> $request->price,
+          "ProductNumber" => $request->productcode,
+          "Productname" => $request->name,
+          "COGS"=> $request->price,
         ];
         //dd($request->all());
         try{
@@ -44,9 +44,9 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {   
       $product = [
-          "name" => $request->name,
-          "productcode" => $request->productcode,
-          "price"=> $request->price,
+          "ProductNumber" => $request->productcode,
+          "Productname" => $request->name,
+          "COGS"=> $request->price,
       ];
       try{
         $this->product->findOrFail($id)->save();

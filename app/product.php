@@ -8,7 +8,7 @@ class product extends Model
 {   
     public $timestamps = false;
     protected $table = 'products';
-    protected $fillable = ['name','productcode','price'];
+    protected $fillable = ['ProductNumber','Productname','COGS'];
     protected $guarded =[];
 
     public function order()
