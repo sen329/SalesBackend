@@ -40,3 +40,4 @@ Route::post('buy/register', 'UserBuyController@register');
         
     });
     Route::post('upload','ProductController@uploadExcel');
+    Route::post('fileupdate','ProductController@importUpdate');

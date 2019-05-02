@@ -77,4 +77,29 @@ public function uploadExcel(){
     return redirect('/')->with('success', 'All good!');
 
 }
+    public function importUpdate()
+    {
+        $data = Excel::toArray(new ProductImport, request()->file('file')); 
+        //dd($data[0]);
+        if(count($data[0])){
+            foreach ($data[0] as $key => $value) {
+                $check =product::where('ProductNumber',$value[0])->exists();
+                $data = [
+                    "ProductNumber" => $value[0],
+                    "Productname" => $value[1],
+                    "COGS"=> $value[2],
+                ];
+                //dd($check, $data);
+                if($check){
+                    product::where('ProductNumber',$value[0])->update($data);
+                }else{
+                    $arr[] = $data;
+                }
+            }
+
+            if(! empty($arr)){
+                product::insert($arr);
+            }
+        }
+    }
 }
