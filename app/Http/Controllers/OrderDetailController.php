@@ -40,9 +40,9 @@ class OrderDetailController extends Controller
             );
             $orderDetailsArr[] = new OrderDetail([
                 'product_id'  => $value,
-                'ProductName' => $product->name,
-                'ProductCode' => $product->productcode,
-                'ProductPrice'   => $product->price,
+                'ProductName' => $product->Productname,
+                'ProductCode' => $product->ProductNumber,
+                'ProductPrice'   => $product->COGS,
                 'ProposedPrice'  => $request->input('ProposedPrice.' . $key),
                 'Quantity' => $request->input('Quantity.'.$key)
             ]);
