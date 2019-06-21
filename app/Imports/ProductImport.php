@@ -18,6 +18,7 @@ class ProductImport implements ToModel
             'ProductNumber'=> $row[0],
             'Productname'=> $row[1],
             'COGS'=> $row[2],
+            'LKPP'=>$row[3],
         ]);
     }
 }

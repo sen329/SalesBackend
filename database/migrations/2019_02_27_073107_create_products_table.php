@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->bigInteger('ProductNumber')->unique();
             $table->string('Productname');
             $table->bigInteger('COGS');
+            $table->bigInteger('LKPP')->nullable();
         });
     }
 

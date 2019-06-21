@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::post('sales/register', 'UserController@register')->middleware('cors');
+Route::post('sales/register', 'UserController@register');
     Route::post('sales/login', 'UserController@authenticate');
 Route::post('buy/register', 'UserBuyController@register');
     Route::post('buy/login','UserBuyController@authenticate');
@@ -37,7 +37,9 @@ Route::post('buy/register', 'UserBuyController@register');
         Route::get('sales/search/id/{id}','SalesController@findByID');
         Route::get('sales/search/name/{name}','SalesController@findByName');
         Route::get('sales/order/{sales_id}','OrderDetailController@salesOrder');
-        
+        Route::get('report','ReportController@showAll');
     });
+    Route::post('report/generate','ReportController@generate');
     Route::post('upload','ProductController@uploadExcel');
     Route::post('fileupdate','ProductController@importUpdate');
+    Route::get('download','ReportController@export');

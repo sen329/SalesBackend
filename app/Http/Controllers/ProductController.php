@@ -30,6 +30,7 @@ class ProductController extends Controller
           "ProductNumber" => $request->productcode,
           "Productname" => $request->name,
           "COGS"=> $request->price,
+          "LKPP"=> $request->lkpp,
         ];
         //dd($request->all());
         try{
@@ -47,6 +48,7 @@ class ProductController extends Controller
           "ProductNumber" => $request->productcode,
           "Productname" => $request->name,
           "COGS"=> $request->price,
+          "LKPP"=>$request->lkpp,
       ];
       try{
         $this->product->findOrFail($id)->save();
@@ -73,7 +75,6 @@ class ProductController extends Controller
 
 public function uploadExcel(){
     Excel::import(new ProductImport, request()->file('file'));
-    
     return redirect('/')->with('success', 'All good!');
 
 }
@@ -88,6 +89,7 @@ public function uploadExcel(){
                     "ProductNumber" => $value[0],
                     "Productname" => $value[1],
                     "COGS"=> $value[2],
+                    "LKPP"=>$value[3],
                 ];
                 //dd($check, $data);
                 if($check){

@@ -44,7 +44,7 @@ class OrderDetailController extends Controller
                 'ProductCode' => $product->ProductNumber,
                 'ProductPrice'   => $product->COGS,
                 'ProposedPrice'  => $request->input('ProposedPrice.' . $key),
-                'Quantity' => $request->input('Quantity.'.$key)
+                'Quantity' => $request->input('Quantity.'.$key),
             ]);
         }
 
@@ -89,6 +89,7 @@ class OrderDetailController extends Controller
       foreach($request->input('ids') as $key => $value){
         $order = $this->order->findOrFail($value);
         $order->Accepted = $request->input('Accepted.' . $key);
+        $order->RecommendedPrice = $request->input('RecommendedPrice.' . $key);
         if (! $order->save()) {
             return response()->json([
                 'message' => 'Error'
