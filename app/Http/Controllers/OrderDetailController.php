@@ -42,6 +42,7 @@ class OrderDetailController extends Controller
                 'product_id'  => $value,
                 'ProductName' => $product->Productname,
                 'ProductCode' => $product->ProductNumber,
+                'LKPP' => $product->LKPP,
                 'ProductPrice'   => $product->COGS,
                 'ProposedPrice'  => $request->input('ProposedPrice.' . $key),
                 'Quantity' => $request->input('Quantity.'.$key),
