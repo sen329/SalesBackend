@@ -42,6 +42,7 @@ class ReportController extends Controller
                     "ProductName" => $data->ProductName,
                     "ProductCode" => $data->ProductCode,
                     "ProductPrice"   => $data->ProductPrice,
+                    "LKPP" => $data->LKPP,
                     "ProposedPrice"  => $data->ProposedPrice,
                     "Margin" => $data->margin,
                     "Total" => $data->totalproposedprice,

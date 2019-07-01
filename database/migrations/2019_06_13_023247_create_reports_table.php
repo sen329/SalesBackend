@@ -27,9 +27,10 @@ class CreateReportsTable extends Migration
             $table->string('ProductName');
             $table->string('ProductCode');
             $table->bigInteger('ProductPrice');
+            $table->bigInteger('LKPP');
             $table->bigInteger('ProposedPrice');
             $table->integer('Quantity');
-            $table->decimal('Margin',4,2);
+            $table->decimal('Margin',8,2);
             $table->bigInteger('Total');
             $table->boolean('Accepted')->nullable();
             $table->bigInteger('RecommendedPrice')->nullable();
