@@ -26,13 +26,14 @@
                 return response()->json(['error' => 'could_not_create_token'], 500);
             }
             $user = User::where('email', $request->email)->first();
-            return response()->json(['success' => true, 'token'=>  $token, 'name'=> $user->name, 'id'=> $user->id]);
+            return response()->json(['success' => true, 'token'=>  $token, 'name'=> $user->name, 'id'=> $user->id, 'branch'=> $user->branch]);
         }
 
         public function register(Request $request)
         {
                 $validator = Validator::make($request->all(), [
                 'name' => 'required|string|max:255',
+                'branch' => 'string',
                 'email' => 'required|string|email|max:255|unique:users',
                 'password' => 'required|string|min:6|confirmed',
             ]);
@@ -43,6 +44,7 @@
 
             $user = User::create([
                 'name' => $request->get('name'),
+                'branch' => $request->get('branch'),
                 'email' => $request->get('email'),
                 'password' => Hash::make($request->get('password')),
             ]);

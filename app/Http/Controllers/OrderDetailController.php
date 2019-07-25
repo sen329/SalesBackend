@@ -22,12 +22,12 @@ class OrderDetailController extends Controller
 
     public function create(Request $request){
         $sales = [
-            "SalesName"=>$request->SalesName,
+            "SalesName"=>$request->user()->name,
             "CustomerName"=>$request->CustomerName,
             "CustomerAddress"=>$request->CustomerAddress,
             "CustomerContact"=>$request->CustomerContact,
             "by_userId"=>$request->user()->id,
-            "name"=>$request->user()->name
+            "branch"=>$request->user()->branch,
         ];
         //dd($request->all());
         DB::beginTransaction();

@@ -8,7 +8,7 @@ class SalesData extends Model
 {   
     public $timestamps = false;
     protected $table = 'sales_data';
-    protected $fillable = ['SalesName', 'CustomerName','CustomerAddress','CustomerContact','by_userId','name'];
+    protected $fillable = ['SalesName', 'CustomerName','CustomerAddress','CustomerContact','by_userId','branch'];
     protected $guarded =[];
     protected $appends = [
         'margin'

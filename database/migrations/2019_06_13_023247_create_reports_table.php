@@ -18,11 +18,11 @@ class CreateReportsTable extends Migration
             $table->unsignedBigInteger('order_id');
             $table->unsignedBigInteger('sales_id');
             $table->string('SalesName');
+            $table->string('branch');
             $table->string('CustomerName');
             $table->string('CustomerAddress');
             $table->bigInteger('CustomerContact');
             $table->unsignedBigInteger('by_userId');
-            $table->string('name');
             $table->unsignedBigInteger('product_id');
             $table->string('ProductName');
             $table->string('ProductCode');
@@ -34,6 +34,7 @@ class CreateReportsTable extends Migration
             $table->bigInteger('Total');
             $table->boolean('Accepted')->nullable();
             $table->bigInteger('RecommendedPrice')->nullable();
+            $table->bigInteger('TotalRecommendedPrice')->nullable();
             $table->timestamps();
         });
     }

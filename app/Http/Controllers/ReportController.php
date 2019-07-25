@@ -33,11 +33,11 @@ class ReportController extends Controller
                     "sales_id"=>$data->sales_id,
                     "order_id"=>$data->id,
                     "SalesName"=>$data->sales->SalesName,
+                    "branch" =>$data->sales->branch,
                     "CustomerName"=>$data->sales->CustomerName,
                     "CustomerAddress"=>$data->sales->CustomerAddress,
                     "CustomerContact"=>$data->sales->CustomerContact,
                     "by_userId"=>$data->sales->by_userId,
-                    "name"=>$data->sales->name,
                     "product_id"  => $data->product_id,
                     "ProductName" => $data->ProductName,
                     "ProductCode" => $data->ProductCode,
@@ -49,6 +49,7 @@ class ReportController extends Controller
                     "Quantity" => $data->Quantity,
                     "Accepted" => $data->Accepted,
                     "RecommendedPrice" => $data->RecommendedPrice,
+                    "TotalRecommendedPrice" => $data->totalrecommendedprice,
                     'created_at'=>$data->created_at,
                     'updated_at'=>$data->updated_at
                 ];

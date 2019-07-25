@@ -13,6 +13,7 @@ class OrderDetail extends Model
     protected $appends = [
         'margin',
         'totalproposedprice',
+        'totalrecommendedprice'
     ];
 
     public function sales(){
@@ -30,4 +31,9 @@ class OrderDetail extends Model
     public function getTotalproposedpriceAttribute(){
         return $this->ProposedPrice*$this->Quantity;
     }
+
+    public function getTotalrecommendedpriceAttribute(){
+        return $this->RecommendedPrice*$this->Quantity;
+    }
+
 }

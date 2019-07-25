@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class report extends Model
 {
     protected $table = 'reports';
-    protected $fillable = ['sales_id','SalesName', 'CustomerName','CustomerAddress','CustomerContact','by_userId','name', 'product_id','ProductName','ProductCode','ProductPrice','LKPP','ProposedPrice','Quantity','Margin','Total','Accepted','RecommendedPrice','created_at','updated_at'];
+    protected $fillable = ['sales_id','SalesName', 'branch','CustomerName','CustomerAddress','CustomerContact','by_userId', 'product_id','ProductName','ProductCode','ProductPrice','LKPP','ProposedPrice','Quantity','Margin','Total','Accepted','RecommendedPrice','TotalRecommendedPrice','created_at','updated_at'];
     protected $guarded =[];
     protected $appends = [
         'margin',
         'totalproposedprice',
+        'totalrecommendedprice',
     ];
 
     protected $hidden = ['sales_id','order_id','margin','totalproposedprice'];
@@ -31,4 +32,9 @@ class report extends Model
     public function getTotalproposedpriceAttribute(){
         return $this->ProposedPrice*$this->Quantity;
     }
+
+    public function getTotalrecommendedpriceAttribute(){
+        return $this->RecommendedPrice*$this->Quantity;
+    }
+
 }
