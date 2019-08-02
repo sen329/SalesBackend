@@ -11,7 +11,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ReportsExport;
 use Exception;
 use DB;
-
+use App\Exports\reportUsers;
 
 class ReportController extends Controller
 {
@@ -74,8 +74,17 @@ class ReportController extends Controller
         return $report;
     }
 
+    public function showId($by_userId){
+        $report = $this->report->where('by_userId',$by_userId)->get();
+        return $report;
+    }
+
     public function export(){
         return Excel::download(new ReportsExport, 'Report.xlsx');
     }
+
+    // public function exportById(){
+    //     return (new reportUsers(2))->download('MyReport.xlsx');
+    // }
 
 }

@@ -25,6 +25,7 @@ class CreateOrderDetailsTable extends Migration
             $table->integer('Quantity');
             $table->boolean('Accepted')->nullable();
             $table->bigInteger('RecommendedPrice')->nullable();
+            $table->boolean('Status')->nullable();
             $table->timestamps();
         });
     }

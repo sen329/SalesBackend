@@ -17,10 +17,14 @@ class CreateSalesDataTable extends Migration
             $table->bigIncrements('id');
             $table->string('SalesName');
             $table->string('CustomerName');
+            $table->string('ContactPerson');
             $table->string('CustomerAddress');
             $table->bigInteger('CustomerContact');
             $table->unsignedBigInteger('by_userId');
             $table->string('branch');
+            $table->string('warehouse');
+            $table->string('nolang');
+            $table->string('DeliveryMethod')->nullable();
         });
     }
 

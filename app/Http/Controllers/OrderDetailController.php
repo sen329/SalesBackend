@@ -24,10 +24,13 @@ class OrderDetailController extends Controller
         $sales = [
             "SalesName"=>$request->user()->name,
             "CustomerName"=>$request->CustomerName,
+            "ContactPerson"=>$request->ContactPerson,
             "CustomerAddress"=>$request->CustomerAddress,
             "CustomerContact"=>$request->CustomerContact,
             "by_userId"=>$request->user()->id,
             "branch"=>$request->user()->branch,
+            "warehouse"=>$request->warehouse,
+            "nolang"=>$request->nolang,
         ];
         //dd($request->all());
         DB::beginTransaction();
