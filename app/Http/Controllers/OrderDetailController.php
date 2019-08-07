@@ -26,6 +26,7 @@ class OrderDetailController extends Controller
             "CustomerName"=>$request->CustomerName,
             "ContactPerson"=>$request->ContactPerson,
             "CustomerAddress"=>$request->CustomerAddress,
+            "Postcode"=>$request->Postcode,
             "CustomerContact"=>$request->CustomerContact,
             "by_userId"=>$request->user()->id,
             "branch"=>$request->user()->branch,
