@@ -20,7 +20,7 @@ class CreateOrderDetailsTable extends Migration
             $table->string('ProductName');
             $table->string('ProductCode');
             $table->bigInteger('ProductPrice');
-            $table->bigInteger('LKPP');
+            $table->bigInteger('LKPP')->nullable();
             $table->bigInteger('ProposedPrice');
             $table->integer('Quantity');
             $table->boolean('Accepted')->nullable();
