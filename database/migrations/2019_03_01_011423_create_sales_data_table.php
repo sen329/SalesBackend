@@ -19,6 +19,7 @@ class CreateSalesDataTable extends Migration
             $table->string('CustomerName');
             $table->string('ContactPerson');
             $table->string('CustomerAddress');
+            $table->integer('Postcode');
             $table->bigInteger('CustomerContact');
             $table->unsignedBigInteger('by_userId');
             $table->string('branch');

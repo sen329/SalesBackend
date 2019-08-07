@@ -33,6 +33,7 @@ Route::post('buy/register', 'UserBuyController@register');
         Route::post('product/create','ProductController@create');
         Route::get('sales/mysales/{id}','SalesController@mySales');
         Route::post('sales/order/stat','OrderDetailController@update');
+        Route::post('sales/order/winLose','OrderDetailController@winLose');
         Route::post('product/{id}','ProductController@update');
         Route::get('sales/search/id/{id}','SalesController@findByID');
         Route::get('sales/search/name/{name}','SalesController@findByName');

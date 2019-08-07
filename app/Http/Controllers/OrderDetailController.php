@@ -105,4 +105,22 @@ class OrderDetailController extends Controller
         'message' => 'Success'
       ]);
 }
+
+    public function winLose(Request $request)
+    {
+        foreach($request->input('ids') as $key => $value){
+            $order = $this->order->findOrFail($value);
+            $order->Status = $request->input('Status.' . $key);
+            if (! $order->save()) {
+                return response()->json([
+                    'message' => 'Error'
+                ]);
+            }
+          }
+          //dd($request->all());
+          return response()->json([
+            'message' => 'Success'
+          ]);
+    }
+
 }
