@@ -50,6 +50,7 @@ class ReportController extends Controller
                     "Accepted" => $data->Accepted,
                     "RecommendedPrice" => $data->RecommendedPrice,
                     "TotalRecommendedPrice" => $data->totalrecommendedprice,
+                    "Status"=>$data->Status,
                     'created_at'=>$data->created_at,
                     'updated_at'=>$data->updated_at
                 ];
