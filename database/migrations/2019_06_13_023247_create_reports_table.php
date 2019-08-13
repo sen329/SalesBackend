@@ -19,8 +19,10 @@ class CreateReportsTable extends Migration
             $table->unsignedBigInteger('sales_id');
             $table->string('SalesName');
             $table->string('branch');
+            $table->string('nolang');
             $table->string('CustomerName');
             $table->string('CustomerAddress');
+            $table->string('ContactPerson');
             $table->bigInteger('CustomerContact');
             $table->unsignedBigInteger('by_userId');
             $table->unsignedBigInteger('product_id');

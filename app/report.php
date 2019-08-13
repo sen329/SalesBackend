@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class report extends Model
 {
     protected $table = 'reports';
-    protected $fillable = ['sales_id','SalesName', 'branch','CustomerName','CustomerAddress','CustomerContact','by_userId', 'product_id','ProductName','ProductCode','ProductPrice','LKPP','ProposedPrice','Quantity','Margin','Total','Accepted','RecommendedPrice','TotalRecommendedPrice','Status','created_at','updated_at'];
+    protected $fillable = ['sales_id','SalesName', 'branch','nolang','CustomerName','CustomerAddress','ContactPerson','CustomerContact','by_userId', 'product_id','ProductName','ProductCode','ProductPrice','LKPP','ProposedPrice','Quantity','Margin','Total','Accepted','RecommendedPrice','TotalRecommendedPrice','Status','created_at','updated_at'];
     protected $guarded =[];
     protected $appends = [
         'margin',
