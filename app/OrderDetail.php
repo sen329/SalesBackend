@@ -8,7 +8,7 @@ class OrderDetail extends Model
 {
     public $timestamps = true;
     protected $table = 'order_details';
-    protected $fillable = ['sales_id', 'product_id','ProductName','ProductCode','ProductPrice','LKPP','ProposedPrice','Quantity','Accepted','RecommendedPrice','Status','created_at','updated_at'];
+    protected $fillable = ['sales_id', 'product_id','ProductName','ProductCode','ProductPrice','LKPP','ProposedPrice','Quantity','Accepted','RecommendedPrice','stock','Status','created_at','updated_at'];
     protected $guarded =[];
     protected $appends = [
         'margin',

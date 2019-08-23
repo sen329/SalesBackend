@@ -94,6 +94,7 @@ class OrderDetailController extends Controller
       foreach($request->input('ids') as $key => $value){
         $order = $this->order->findOrFail($value);
         $order->Accepted = $request->input('Accepted.' . $key);
+        $order->stock = $request->input('stock.' . $key);
         $order->RecommendedPrice = $request->input('RecommendedPrice.' . $key);
         if (! $order->save()) {
             return response()->json([
