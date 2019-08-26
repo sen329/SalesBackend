@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddStockToOrederDetails extends Migration
+class AddStockToReport extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class AddStockToOrederDetails extends Migration
      */
     public function up()
     {
-        Schema::table('order_details', function (Blueprint $table) {
+        Schema::table('reports', function (Blueprint $table) {
             $table->string('stock')->nullable()->after('RecommendedPrice');
         });
     }
@@ -25,8 +25,8 @@ class AddStockToOrederDetails extends Migration
      */
     public function down()
     {
-        Schema::table('order_details', function (Blueprint $table) {
-            //
+        Schema::table('reports', function (Blueprint $table) {
+            $table->string('stock')->nullable()->after('RecommendedPrice');
         });
     }
 }

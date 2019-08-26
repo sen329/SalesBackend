@@ -51,6 +51,7 @@ class ReportController extends Controller
                     "Quantity" => $data->Quantity,
                     "Accepted" => $data->Accepted,
                     "RecommendedPrice" => $data->RecommendedPrice,
+                    "stock" =>$data->stock,
                     "TotalRecommendedPrice" => $data->totalrecommendedprice,
                     "Status"=>$data->Status,
                     'created_at'=>$data->created_at,
